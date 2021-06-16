@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.NewExampleFragment"
+    android:background="@android:color/white">
+
+    <RelativeLayout
+        android:orientation="vertical"
+        android:id="@+id/globalRelativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints">
+        <!-- TODO: Update blank fragment layout -->
+        <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/tableLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@android:color/darker_gray"
+            android:stretchColumns="1"> <!-- stretch the second column of the layout-->
+
+            <!-- first row of the table layout-->
+            <TableRow
+
+                android:id="@+id/firstRow"
+                android:layout_width="fill_parent"
+                android:background="@color/colorGreen">
+
+                <!-- first element of the row-->
+                <TextView
+                    android:id="@+id/timeTextView"
+                    android:layout_width="0dp"
+                    android:layout_weight="25"
+                    android:layout_height="wrap_content"
+                    android:padding="14sp"
+                    android:text="Time"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp"
+                    android:gravity="center_horizontal"/>
+
+                <TextView
+                    android:id="@+id/queueATextView"
+                    android:layout_width="0dp"
+                    android:layout_weight="25"
+                    android:layout_height="wrap_content"
+                    android:padding="14sp"
+                    android:text="Queue A"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp"
+                    android:gravity="center_horizontal"/>
+
+                <TextView
+                    android:id="@+id/queueBTextView"
+                    android:layout_width="0dp"
+                    android:layout_weight="25"
+                    android:layout_height="wrap_content"
+                    android:padding="14sp"
+                    android:text="Queue B"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp"
+                    android:gravity="center_horizontal"/>
+
+                <TextView
+                    android:id="@+id/queueCTextView"
+                    android:layout_width="0dp"
+                    android:layout_weight="25"
+                    android:layout_height="wrap_content"
+                    android:padding="14sp"
+                    android:text="Queue C"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp"
+                    android:gravity="center_horizontal"/>
+
+            </TableRow>
+
+            <!-- first row of the table layout-->
+            <TableRow
+
+                android:id="@+id/row1"
+                android:layout_width="fill_parent"
+                android:background="@android:color/white">
+
+                <!-- first element of the row-->
+                <EditText
+                    android:id="@+id/time1EditText"
+                    android:layout_width="0dp"
+                    android:layout_weight="25"
+                    android:layout_height="wrap_content"
+                    android:padding="12sp"
+                    android:hint="Time 1"
+                    android:textColor="#000"
+                    android:gravity="center_horizontal"
+                    android:textSize="12sp" />
+
+                <EditText
+                    android:id="@+id/queueA1EditText"
+                    android:layout_width="0dp"
+                    android:layout_weight="25"
+                    android:layout_height="wrap_content"
+                    android:padding="12sp"
+                    android:hint="A1"
+                    android:textColor="#000"
+                    android:gravity="center_horizontal"
+                    android:textSize="12sp" />
+
+                <EditText
+                    android:id="@+id/queueB1EditText"
+                    android:layout_width="0dp"
+                    android:layout_weight="25"
+                    android:layout_height="wrap_content"
+                    android:padding="12sp"
+                    android:hint="B1"
+                    android:textColor="#000"
+                    android:gravity="center_horizontal"
+                    android:textSize="12sp" />
+
+                <EditText
+                    android:id="@+id/queueC1EditText"
+                    android:layout_width="0dp"
+                    android:layout_weight="25"
+                    android:layout_height="wrap_content"
+                    android:padding="12sp"
+                    android:hint="C1"
+                    android:textColor="#000"
+                    android:gravity="center_horizontal"
+                    android:textSize="12sp" />
+
+            </TableRow>
+
+
+        </TableLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@+id/tableLayout"
+            android:gravity="center">
+
+            <Spinner
+                android:id="@+id/algorithmsSpinner"
+                android:layout_width="80sp"
+                android:layout_height="33sp"
+                android:layout_marginLeft="5sp"
+                android:layout_marginRight="5sp"
+                android:layout_marginTop="10sp"
+                android:background="@color/colorGreen" />
+
+            <Button
+                android:id="@+id/showButton"
+                android:layout_width="80sp"
+                android:layout_height="33sp"
+                android:layout_marginLeft="5sp"
+                android:layout_marginRight="5sp"
+                android:layout_marginTop="10sp"
+                android:text="Show"
+                android:layout_toRightOf="@+id/algorithmsSpinner"
+                android:background="@color/colorGreen" />
+
+            <Button
+                android:id="@+id/saveExampleButton"
+                android:layout_width="80sp"
+                android:layout_height="33sp"
+                android:layout_marginLeft="5sp"
+                android:layout_marginRight="5sp"
+                android:layout_marginTop="10sp"
+                android:text="Save"
+                android:layout_toRightOf="@+id/showButton"
+                android:background="@color/colorGreen" />
+
+<!--            <Button-->
+<!--                android:id="@+id/removeRowButton"-->
+<!--                android:layout_width="100sp"-->
+<!--                android:layout_height="33sp"-->
+<!--                android:layout_marginLeft="5sp"-->
+<!--                android:layout_marginRight="5sp"-->
+<!--                android:layout_marginTop="10sp"-->
+<!--                android:text="Remove Row"-->
+<!--                android:layout_toRightOf="@+id/saveExampleButton"-->
+<!--                android:background="@color/colorGreen" />-->
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/addNewRowFloatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10sp"
+        android:layout_marginBottom="60dp"
+        android:clickable="true"
+        android:src="@drawable/ic_baseline_add_24"
+        android:tint="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/removeRowFloatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="70sp"
+        android:layout_marginBottom="60dp"
+        android:clickable="true"
+        android:src="@drawable/ic_baseline_remove_24"
+        android:tint="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="MissingConstraints" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
