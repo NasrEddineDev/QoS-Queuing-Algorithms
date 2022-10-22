@@ -51,8 +51,8 @@ public class OpenExampleFragment extends Fragment {
     private Spinner algorithmsSpinner;
     private TableLayout tableLayout;
     private Button showButton;
-    private FloatingActionButton addNewRowFloatingActionButton;
-    private FloatingActionButton removeRowFloatingActionButton;
+    private Button addNewRowFloatingActionButton;
+    private Button removeRowFloatingActionButton;
     private Button saveExampleButton;
     private AlgorithmLibrary algorithmLibrary;
     private ExampleViewModel exampleViewModel;
@@ -99,8 +99,8 @@ public class OpenExampleFragment extends Fragment {
         algorithmsSpinner = (Spinner)view.findViewById(R.id.algorithmsSpinner);
         tableLayout = (TableLayout) view.findViewById(R.id.tableLayout);
         showButton = (Button)view.findViewById(R.id.showButton);
-        addNewRowFloatingActionButton = (FloatingActionButton)view.findViewById(R.id.addNewRowFloatingActionButton);
-        removeRowFloatingActionButton = (FloatingActionButton)view.findViewById(R.id.removeRowFloatingActionButton);
+        addNewRowFloatingActionButton = (Button)view.findViewById(R.id.addRowButton);
+        removeRowFloatingActionButton = (Button)view.findViewById(R.id.removeRowButton);
         saveExampleButton = (Button)view.findViewById(R.id.saveExampleButton);
         exampleViewModel = new ExampleViewModel(getActivity().getApplication());
         queueViewModel = new QueueViewModel(getActivity().getApplication());

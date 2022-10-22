@@ -36,10 +36,6 @@
         "source": "/home/nasreddine/Projects/QoSQueuingAlgorithms/app/src/main/res/drawable/ic_baseline_add_24.xml"
     },
     {
-        "merged": "/home/nasreddine/Projects/QoSQueuingAlgorithms/app/build/intermediates/res/merged/debug/drawable-v24_ic_launcher_foreground.xml.flat",
-        "source": "/home/nasreddine/Projects/QoSQueuingAlgorithms/app/src/main/res/drawable-v24/ic_launcher_foreground.xml"
-    },
-    {
         "merged": "/home/nasreddine/Projects/QoSQueuingAlgorithms/app/build/intermediates/res/merged/debug/drawable_ic_baseline_mediation_24.xml.flat",
         "source": "/home/nasreddine/Projects/QoSQueuingAlgorithms/app/src/main/res/drawable/ic_baseline_mediation_24.xml"
     },
@@ -76,6 +72,10 @@
         "source": "/home/nasreddine/Projects/QoSQueuingAlgorithms/app/src/main/res/layout/fragment_new_example.xml"
     },
     {
+        "merged": "/home/nasreddine/Projects/QoSQueuingAlgorithms/app/build/intermediates/res/merged/debug/drawable_ic_baseline_save_36.xml.flat",
+        "source": "/home/nasreddine/Projects/QoSQueuingAlgorithms/app/src/main/res/drawable/ic_baseline_save_36.xml"
+    },
+    {
         "merged": "/home/nasreddine/Projects/QoSQueuingAlgorithms/app/build/intermediates/res/merged/debug/drawable_ic_baseline_home_24.xml.flat",
         "source": "/home/nasreddine/Projects/QoSQueuingAlgorithms/app/src/main/res/drawable/ic_baseline_home_24.xml"
     },
@@ -96,8 +96,16 @@
         "source": "/home/nasreddine/Projects/QoSQueuingAlgorithms/app/src/main/res/drawable/ic_baseline_post_add_24.xml"
     },
     {
+        "merged": "/home/nasreddine/Projects/QoSQueuingAlgorithms/app/build/intermediates/res/merged/debug/drawable_ic_baseline_preview_24.xml.flat",
+        "source": "/home/nasreddine/Projects/QoSQueuingAlgorithms/app/src/main/res/drawable/ic_baseline_preview_24.xml"
+    },
+    {
         "merged": "/home/nasreddine/Projects/QoSQueuingAlgorithms/app/build/intermediates/res/merged/debug/mipmap-xhdpi_ic_launcher_round.png.flat",
         "source": "/home/nasreddine/Projects/QoSQueuingAlgorithms/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/home/nasreddine/Projects/QoSQueuingAlgorithms/app/build/intermediates/res/merged/debug/drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
+        "source": "/home/nasreddine/Projects/QoSQueuingAlgorithms/app/build/generated/res/pngs/debug/drawable-anydpi-v24/ic_launcher_foreground.xml"
     },
     {
         "merged": "/home/nasreddine/Projects/QoSQueuingAlgorithms/app/build/intermediates/res/merged/debug/mipmap-xxhdpi_ic_launcher.png.flat",
@@ -132,12 +140,28 @@
         "source": "/home/nasreddine/Projects/QoSQueuingAlgorithms/app/src/main/res/layout/fragment_home.xml"
     },
     {
+        "merged": "/home/nasreddine/Projects/QoSQueuingAlgorithms/app/build/intermediates/res/merged/debug/drawable_ic_baseline_add_36.xml.flat",
+        "source": "/home/nasreddine/Projects/QoSQueuingAlgorithms/app/src/main/res/drawable/ic_baseline_add_36.xml"
+    },
+    {
         "merged": "/home/nasreddine/Projects/QoSQueuingAlgorithms/app/build/intermediates/res/merged/debug/layout_home.xml.flat",
         "source": "/home/nasreddine/Projects/QoSQueuingAlgorithms/app/src/main/res/layout/home.xml"
     },
     {
         "merged": "/home/nasreddine/Projects/QoSQueuingAlgorithms/app/build/intermediates/res/merged/debug/mipmap-hdpi_tiaret_university_building.jpeg.flat",
         "source": "/home/nasreddine/Projects/QoSQueuingAlgorithms/app/src/main/res/mipmap-hdpi/tiaret_university_building.jpeg"
+    },
+    {
+        "merged": "/home/nasreddine/Projects/QoSQueuingAlgorithms/app/build/intermediates/res/merged/debug/drawable_ic_baseline_remove_36.xml.flat",
+        "source": "/home/nasreddine/Projects/QoSQueuingAlgorithms/app/src/main/res/drawable/ic_baseline_remove_36.xml"
+    },
+    {
+        "merged": "/home/nasreddine/Projects/QoSQueuingAlgorithms/app/build/intermediates/res/merged/debug/drawable_ic_baseline_preview_36.xml.flat",
+        "source": "/home/nasreddine/Projects/QoSQueuingAlgorithms/app/src/main/res/drawable/ic_baseline_preview_36.xml"
+    },
+    {
+        "merged": "/home/nasreddine/Projects/QoSQueuingAlgorithms/app/build/intermediates/res/merged/debug/drawable_ic_baseline_save_24.xml.flat",
+        "source": "/home/nasreddine/Projects/QoSQueuingAlgorithms/app/src/main/res/drawable/ic_baseline_save_24.xml"
     },
     {
         "merged": "/home/nasreddine/Projects/QoSQueuingAlgorithms/app/build/intermediates/res/merged/debug/layout_activity_main.xml.flat",

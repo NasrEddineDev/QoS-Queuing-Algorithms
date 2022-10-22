@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="fill_parent"
+    android:layout_width="fill_parent"
+    android:fillViewport="true">
+
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="50dp"
     tools:context=".fragments.NewExampleFragment"
     android:background="@android:color/white">
 
@@ -14,7 +20,7 @@
         android:layout_height="wrap_content"
         tools:ignore="MissingConstraints">
         <!-- TODO: Update blank fragment layout -->
-        <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        <TableLayout
             android:id="@+id/tableLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -98,23 +104,24 @@
                 <EditText
                     android:id="@+id/queueA1EditText"
                     android:layout_width="0dp"
-                    android:layout_weight="25"
                     android:layout_height="wrap_content"
-                    android:padding="12sp"
-                    android:hint="A1"
-                    android:textColor="#000"
+                    android:layout_weight="25"
                     android:gravity="center_horizontal"
+                    android:hint="A1"
+                    android:padding="12sp"
+                    android:textColor="#000"
                     android:textSize="12sp" />
 
                 <EditText
                     android:id="@+id/queueB1EditText"
                     android:layout_width="0dp"
-                    android:layout_weight="25"
                     android:layout_height="wrap_content"
-                    android:padding="12sp"
-                    android:hint="B1"
-                    android:textColor="#000"
+                    android:layout_weight="25"
+                    android:foregroundTint="#FFFFFF"
                     android:gravity="center_horizontal"
+                    android:hint="B1"
+                    android:padding="12sp"
+                    android:textColor="#000"
                     android:textSize="12sp" />
 
                 <EditText
@@ -142,49 +149,79 @@
 
             <Spinner
                 android:id="@+id/algorithmsSpinner"
-                android:layout_width="80sp"
-                android:layout_height="33sp"
+                android:layout_width="120sp"
+                android:layout_height="36sp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="55dp"
                 android:layout_marginLeft="5sp"
+                android:layout_marginTop="14dp"
                 android:layout_marginRight="5sp"
-                android:layout_marginTop="10sp"
                 android:background="@color/colorGreen" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/showButton"
-                android:layout_width="80sp"
-                android:layout_height="33sp"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="36dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
                 android:layout_marginLeft="5sp"
+                android:layout_marginTop="8dp"
                 android:layout_marginRight="5sp"
-                android:layout_marginTop="10sp"
-                android:text="Show"
                 android:layout_toRightOf="@+id/algorithmsSpinner"
-                android:background="@color/colorGreen" />
+                android:background="@color/colorGreen"
+                app:icon="@drawable/ic_baseline_preview_36" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/saveExampleButton"
-                android:layout_width="80sp"
-                android:layout_height="33sp"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="36dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
                 android:layout_marginLeft="5sp"
+                android:layout_marginTop="8dp"
                 android:layout_marginRight="5sp"
-                android:layout_marginTop="10sp"
-                android:text="Save"
                 android:layout_toRightOf="@+id/showButton"
-                android:background="@color/colorGreen" />
+                android:background="@color/colorGreen"
+                app:icon="@drawable/ic_baseline_save_36" />
 
-<!--            <Button-->
-<!--                android:id="@+id/removeRowButton"-->
-<!--                android:layout_width="100sp"-->
-<!--                android:layout_height="33sp"-->
-<!--                android:layout_marginLeft="5sp"-->
-<!--                android:layout_marginRight="5sp"-->
-<!--                android:layout_marginTop="10sp"-->
-<!--                android:text="Remove Row"-->
-<!--                android:layout_toRightOf="@+id/saveExampleButton"-->
-<!--                android:background="@color/colorGreen" />-->
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/addRowButton"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="36dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="5sp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="5sp"
+                android:layout_toRightOf="@+id/saveExampleButton"
+                android:background="@color/colorGreen"
+                app:icon="@drawable/ic_baseline_add_36" />
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/removeRowButton"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="36dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="false"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="55dp"
+                android:layout_marginRight="5sp"
+                android:layout_toEndOf="@+id/addRowButton"
+                android:layout_toRightOf="@+id/addRowButton"
+                android:background="@color/colorGreen"
+                app:icon="@drawable/ic_baseline_remove_36" />
+
 
         </RelativeLayout>
     </RelativeLayout>
 
+<!--
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addNewRowFloatingActionButton"
         android:layout_width="wrap_content"
@@ -210,6 +247,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="MissingConstraints" />
+-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

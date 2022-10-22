@@ -6,7 +6,7 @@ android {
     buildToolsVersion "29.0.3"
     defaultConfig {
         applicationId "com.mesbahhightech.qosqueuingalgorithms"
-        minSdkVersion 26
+        minSdkVersion 23
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -56,4 +56,5 @@ dependencies {
     // Jetpack Compose Integration
 //    implementation("androidx.navigation:navigation-compose:2.4.0-alpha01")
 
+    debugImplementation 'com.amitshekhar.android:debug-db:1.0.6'
 }

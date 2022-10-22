@@ -50,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
 
      public void onButtonShowClick(View view){
         Spinner spinnerAlgorithms = (Spinner) findViewById(R.id.spinnerAlgorithms);
-
     }
     public void onShowMessageButtonClick(View view){
         TextView firstMessageTextView = findViewById(R.id.firstMessageTextView);

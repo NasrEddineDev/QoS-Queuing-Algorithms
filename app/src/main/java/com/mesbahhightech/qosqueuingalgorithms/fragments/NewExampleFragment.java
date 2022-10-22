@@ -1,7 +1,9 @@
 package com.mesbahhightech.qosqueuingalgorithms.fragments;
 
+import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -52,8 +54,8 @@ public class NewExampleFragment extends Fragment {
     private Spinner algorithmsSpinner;
     private TableLayout tableLayout;
     private Button showButton;
-    private FloatingActionButton addNewRowFloatingActionButton;
-    private FloatingActionButton removeRowFloatingActionButton;
+    private Button addRowButton;
+    private Button removeRowButton;
     private Button saveExampleButton;
     private AlgorithmLibrary algorithmLibrary;
     private ExampleViewModel exampleViewModel;
@@ -101,8 +103,8 @@ public class NewExampleFragment extends Fragment {
         algorithmsSpinner = (Spinner)view.findViewById(R.id.algorithmsSpinner);
         tableLayout = (TableLayout) view.findViewById(R.id.tableLayout);
         showButton = (Button)view.findViewById(R.id.showButton);
-        addNewRowFloatingActionButton = (FloatingActionButton)view.findViewById(R.id.addNewRowFloatingActionButton);
-        removeRowFloatingActionButton = (FloatingActionButton)view.findViewById(R.id.removeRowFloatingActionButton);
+        addRowButton = (Button)view.findViewById(R.id.addRowButton);
+        removeRowButton = (Button)view.findViewById(R.id.removeRowButton);
         saveExampleButton = (Button)view.findViewById(R.id.saveExampleButton);
 //        exampleViewModel = new ViewModelProvider(this).get(ExampleViewModel.class);
         exampleViewModel = new ExampleViewModel(getActivity().getApplication());
@@ -142,7 +144,7 @@ public class NewExampleFragment extends Fragment {
         });
 
         /* Create a new row to be added. */
-        addNewRowFloatingActionButton.setOnClickListener(new View.OnClickListener() {
+        addRowButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 TableRow tr = new TableRow(getActivity().getApplicationContext());
@@ -156,6 +158,8 @@ public class NewExampleFragment extends Fragment {
                 editText.setTextSize(TypedValue.COMPLEX_UNIT_SP,12);
                 editText.setTextColor(Color.BLACK);
                 editText.setGravity(Gravity.CENTER);
+                editText.setHintTextColor(Color.GRAY);
+                editText.setBackgroundTintList(ColorStateList.valueOf(Color.GRAY));
                 TableRow.LayoutParams p = new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT);
                 p.weight = 25;
                 editText.setLayoutParams(p);
@@ -169,6 +173,8 @@ public class NewExampleFragment extends Fragment {
                 editText.setTextSize(TypedValue.COMPLEX_UNIT_SP,12);
                 editText.setTextColor(Color.BLACK);
                 editText.setGravity(Gravity.CENTER);
+                editText.setHintTextColor(Color.GRAY);
+                editText.setBackgroundTintList(ColorStateList.valueOf(Color.GRAY));
                 p = new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT);
                 p.weight = 25;
                 editText.setLayoutParams(p);
@@ -182,6 +188,8 @@ public class NewExampleFragment extends Fragment {
                 editText.setTextSize(TypedValue.COMPLEX_UNIT_SP,12);
                 editText.setTextColor(Color.BLACK);
                 editText.setGravity(Gravity.CENTER);
+                editText.setHintTextColor(Color.GRAY);
+                editText.setBackgroundTintList(ColorStateList.valueOf(Color.GRAY));
                 p = new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT);
                 p.weight = 25;
                 editText.setLayoutParams(p);
@@ -195,6 +203,8 @@ public class NewExampleFragment extends Fragment {
                 editText.setTextSize(TypedValue.COMPLEX_UNIT_SP,12);
                 editText.setTextColor(Color.BLACK);
                 editText.setGravity(Gravity.CENTER);
+                editText.setHintTextColor(Color.GRAY);
+                editText.setBackgroundTintList(ColorStateList.valueOf(Color.GRAY));
                 p = new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT);
                 p.weight = 25;
                 editText.setLayoutParams(p);
@@ -208,7 +218,7 @@ public class NewExampleFragment extends Fragment {
             }
         });
 
-        removeRowFloatingActionButton.setOnClickListener(new View.OnClickListener() {
+        removeRowButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (tableLayout.getChildCount() > 2) {
@@ -262,11 +272,11 @@ public class NewExampleFragment extends Fragment {
                          example.getName() + " Inserted",
                          Toast.LENGTH_SHORT).show();
                  Queue queue = new Queue("File A", "A;;A;B;;;;", example.getId());
-//                 queueViewModel.insert(queue);
+                 queueViewModel.insert(queue);
                  queue = new Queue("File B", "A;;A;B;;;;", example.getId());
-//                 queueViewModel.insert(queue);
+                 queueViewModel.insert(queue);
                  queue = new Queue("File C", "A;;A;B;;;;", example.getId());
-//                 queueViewModel.insert(queue);
+                 queueViewModel.insert(queue);
 
 //                 findNavController(view).navigate(R.id.homeFragment);
              }

@@ -1051,6 +1051,7 @@ drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
 drawable ic_baseline_add_24
+drawable ic_baseline_add_36
 drawable ic_baseline_checklist_24
 drawable ic_baseline_edit_24
 drawable ic_baseline_format_list_bulleted_24
@@ -1060,7 +1061,12 @@ drawable ic_baseline_low_priority_24
 drawable ic_baseline_mediation_24
 drawable ic_baseline_note_add_24
 drawable ic_baseline_post_add_24
+drawable ic_baseline_preview_24
+drawable ic_baseline_preview_36
 drawable ic_baseline_remove_24
+drawable ic_baseline_remove_36
+drawable ic_baseline_save_24
+drawable ic_baseline_save_36
 drawable ic_baseline_settings_24
 drawable ic_launcher_background
 drawable ic_launcher_foreground
@@ -1171,7 +1177,7 @@ id action_text
 id actions
 id activity_chooser_view_content
 id add
-id addNewRowFloatingActionButton
+id addRowButton
 id alertTitle
 id algorithmsImageView
 id algorithmsSpinner
@@ -1347,7 +1353,7 @@ id queueCTextView
 id queuingAlgorithmsImageView
 id queuingAlgorithmsTextView
 id radio
-id removeRowFloatingActionButton
+id removeRowButton
 id right
 id right_icon
 id right_side
@@ -1546,6 +1552,7 @@ mipmap ic_launcher_round
 mipmap tiaret_university_building
 mipmap tiaret_university_logo
 navigation nav_graph
+string PORT_NUMBER
 string abc_action_bar_home_description
 string abc_action_bar_up_description
 string abc_action_menu_overflow_description
