@@ -29,6 +29,7 @@ import com.mesbahhightech.qosqueuingalgorithms.data.Queue;
 import com.mesbahhightech.qosqueuingalgorithms.data.QueueViewModel;
 
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 import static androidx.navigation.Navigation.findNavController;
 
@@ -246,13 +247,37 @@ public class SettingsFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Example example = new Example("eg 01", 3,7);
-                exampleViewModel.insert(example);
+                try {
+                    exampleViewModel.insert(example);
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 Queue queue = new Queue("File A", "A;;A;B;;;;", example.getId());
-                queueViewModel.insert(queue);
+                try {
+                    queueViewModel.insert(queue);
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 queue = new Queue("File B", "A;;A;B;;;;", example.getId());
-                queueViewModel.insert(queue);
+                try {
+                    queueViewModel.insert(queue);
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 queue = new Queue("File C", "A;;A;B;;;;", example.getId());
-                queueViewModel.insert(queue);
+                try {
+                    queueViewModel.insert(queue);
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
 
 //                 findNavController(view).navigate(R.id.homeFragment);
             }

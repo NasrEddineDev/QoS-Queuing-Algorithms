@@ -98,12 +98,13 @@ public final class QueueDao_Impl implements QueueDao {
   }
 
   @Override
-  public void insert(final Queue queue) {
+  public long insert(final Queue queue) {
     __db.assertNotSuspendingTransaction();
     __db.beginTransaction();
     try {
-      __insertionAdapterOfQueue.insert(queue);
+      long _result = __insertionAdapterOfQueue.insertAndReturnId(queue);
       __db.setTransactionSuccessful();
+      return _result;
     } finally {
       __db.endTransaction();
     }

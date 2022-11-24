@@ -38,8 +38,9 @@ public final class QoSQueuingAlgorithmDataBase_Impl extends QoSQueuingAlgorithmD
         _db.execSQL("CREATE TABLE IF NOT EXISTS `example` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT, `rows` INTEGER NOT NULL, `columns` INTEGER NOT NULL)");
         _db.execSQL("CREATE TABLE IF NOT EXISTS `algorithm` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT, `description` TEXT)");
         _db.execSQL("CREATE TABLE IF NOT EXISTS `queue` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT, `content` TEXT, `example_id` INTEGER NOT NULL, FOREIGN KEY(`example_id`) REFERENCES `example`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )");
+        _db.execSQL("CREATE INDEX IF NOT EXISTS `index_queue_example_id` ON `queue` (`example_id`)");
         _db.execSQL("CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
-        _db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '32b3f623e4a0b7ceeb45d39be4d79c94')");
+        _db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '5ecee1850fbe5355c6df1352b1774ac3')");
       }
 
       @Override
@@ -120,7 +121,8 @@ public final class QoSQueuingAlgorithmDataBase_Impl extends QoSQueuingAlgorithmD
         _columnsQueue.put("example_id", new TableInfo.Column("example_id", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         final HashSet<TableInfo.ForeignKey> _foreignKeysQueue = new HashSet<TableInfo.ForeignKey>(1);
         _foreignKeysQueue.add(new TableInfo.ForeignKey("example", "CASCADE", "NO ACTION",Arrays.asList("example_id"), Arrays.asList("id")));
-        final HashSet<TableInfo.Index> _indicesQueue = new HashSet<TableInfo.Index>(0);
+        final HashSet<TableInfo.Index> _indicesQueue = new HashSet<TableInfo.Index>(1);
+        _indicesQueue.add(new TableInfo.Index("index_queue_example_id", false, Arrays.asList("example_id")));
         final TableInfo _infoQueue = new TableInfo("queue", _columnsQueue, _foreignKeysQueue, _indicesQueue);
         final TableInfo _existingQueue = TableInfo.read(_db, "queue");
         if (! _infoQueue.equals(_existingQueue)) {
@@ -130,7 +132,7 @@ public final class QoSQueuingAlgorithmDataBase_Impl extends QoSQueuingAlgorithmD
         }
         return new RoomOpenHelper.ValidationResult(true, null);
       }
-    }, "32b3f623e4a0b7ceeb45d39be4d79c94", "ee20ca0aebf666f9c9d68d599c0d69ba");
+    }, "5ecee1850fbe5355c6df1352b1774ac3", "8ce75df32f0c3a4b7cbcf6b844e068c0");
     final SupportSQLiteOpenHelper.Configuration _sqliteConfig = SupportSQLiteOpenHelper.Configuration.builder(configuration.context)
         .name(configuration.name)
         .callback(_openCallback)

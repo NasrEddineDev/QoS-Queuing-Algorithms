@@ -10,6 +10,7 @@ import com.mesbahhightech.qosqueuingalgorithms.data.ExampleDao;
 import com.mesbahhightech.qosqueuingalgorithms.data.QoSQueuingAlgorithmDataBase;
 
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class ExampleRepository {
     private ExampleDao exampleDao;
@@ -21,8 +22,8 @@ public class ExampleRepository {
         allExamples = exampleDao.getAllExamples();
     }
 
-    public void insert(Example example){
-        new InsertExampleAsyncTask(exampleDao).execute(example);
+    public long insert(Example example) throws ExecutionException, InterruptedException {
+        return new InsertExampleAsyncTask(exampleDao).execute(example).get();
     }
 
     public void update(Example example){
@@ -49,15 +50,15 @@ public class ExampleRepository {
         return exampleDao.getExampleByName(example_name);
     }
 
-    private static class InsertExampleAsyncTask extends AsyncTask <Example, Void, Void>{
+    private static class InsertExampleAsyncTask extends AsyncTask <Example, Void, Long>{
         private ExampleDao exampleDao;
         private InsertExampleAsyncTask(ExampleDao exampleDao){
             this.exampleDao = exampleDao;
         }
         @Override
-        protected Void doInBackground(Example... examples){
-            exampleDao.insert(examples[0]);
-            return null;
+        protected Long doInBackground(Example... examples){
+            return exampleDao.insert(examples[0]);
+            // return null;
         }
     }
 

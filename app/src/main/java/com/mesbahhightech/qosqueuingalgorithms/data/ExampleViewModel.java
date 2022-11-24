@@ -10,6 +10,7 @@ import com.mesbahhightech.qosqueuingalgorithms.data.Example;
 import com.mesbahhightech.qosqueuingalgorithms.data.ExampleRepository;
 
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class ExampleViewModel extends AndroidViewModel {
     private ExampleRepository exampleRepository;
@@ -21,8 +22,8 @@ public class ExampleViewModel extends AndroidViewModel {
         allExamples = exampleRepository.getAllExamples();
     }
 
-    public void insert(Example example){
-        exampleRepository.insert(example);
+    public long insert(Example example) throws ExecutionException, InterruptedException {
+        return exampleRepository.insert(example);
     }
 
     public void update(Example example){

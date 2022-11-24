@@ -1,14 +1,251 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_height="fill_parent"
+android:layout_width="fill_parent"
+android:fillViewport="true">
+
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".fragments.OpenExampleFragment">
+    android:layout_height="wrap_content"
+    android:paddingBottom="50dp"
+    tools:context=".fragments.OpenExampleFragment"
+    android:background="@android:color/white">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
+        android:orientation="vertical"
+        android:id="@+id/globalRelativeLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="hello_open_example_fragment" />
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints">
+        <!-- TODO: Update blank fragment layout -->
 
-</FrameLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/selectEgRelativeLayout"
+            android:gravity="center">
+
+            <Spinner
+                android:id="@+id/examplesSpinner"
+                android:layout_width="120sp"
+                android:layout_height="36sp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="55dp"
+                android:layout_marginLeft="5sp"
+                android:layout_marginTop="14dp"
+                android:layout_marginRight="5sp"
+                android:background="@color/colorGreen" />
+
+        </RelativeLayout>
+
+        <TableLayout
+            android:id="@+id/tableLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/selectEgRelativeLayout"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="@android:color/darker_gray"
+            android:stretchColumns="1"> <!-- stretch the second column of the layout-->
+
+            <!-- first row of the table layout-->
+            <TableRow
+
+                android:id="@+id/firstRow"
+                android:layout_width="fill_parent"
+                android:background="@color/colorGreen">
+
+                <!-- first element of the row-->
+                <TextView
+                    android:id="@+id/timeTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="25"
+                    android:gravity="center_horizontal"
+                    android:padding="14sp"
+                    android:text="Time"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/queueATextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="25"
+                    android:gravity="center_horizontal"
+                    android:padding="14sp"
+                    android:text="Queue A"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/queueBTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="25"
+                    android:gravity="center_horizontal"
+                    android:padding="14sp"
+                    android:text="Queue B"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/queueCTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="25"
+                    android:gravity="center_horizontal"
+                    android:padding="14sp"
+                    android:text="Queue C"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp" />
+
+            </TableRow>
+
+            <!-- first row of the table layout-->
+            <TableRow
+
+                android:id="@+id/row1"
+                android:layout_width="fill_parent"
+                android:background="@android:color/white">
+
+                <!-- first element of the row-->
+                <EditText
+                    android:id="@+id/time1EditText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="25"
+                    android:gravity="center_horizontal"
+                    android:hint="Time 1"
+                    android:padding="12sp"
+                    android:textColor="#000"
+                    android:textSize="12sp" />
+
+                <EditText
+                    android:id="@+id/queueA1EditText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="25"
+                    android:gravity="center_horizontal"
+                    android:hint="A1"
+                    android:padding="12sp"
+                    android:textColor="#000"
+                    android:textSize="12sp" />
+
+                <EditText
+                    android:id="@+id/queueB1EditText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="25"
+                    android:foregroundTint="#FFFFFF"
+                    android:gravity="center_horizontal"
+                    android:hint="B1"
+                    android:padding="12sp"
+                    android:textColor="#000"
+                    android:textSize="12sp" />
+
+                <EditText
+                    android:id="@+id/queueC1EditText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="25"
+                    android:gravity="center_horizontal"
+                    android:hint="C1"
+                    android:padding="12sp"
+                    android:textColor="#000"
+                    android:textSize="12sp" />
+
+            </TableRow>
+
+
+        </TableLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/buttonsRelativeLayout"
+            android:layout_below="@+id/tableLayout"
+            android:gravity="center">
+
+            <Spinner
+                android:id="@+id/algorithmsSpinner"
+                android:layout_width="120sp"
+                android:layout_height="36sp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="55dp"
+                android:layout_marginLeft="5sp"
+                android:layout_marginTop="14dp"
+                android:layout_marginRight="5sp"
+                android:background="@color/colorGreen" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/showButton"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="36dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="5sp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="5sp"
+                android:layout_toRightOf="@+id/algorithmsSpinner"
+                android:background="@color/colorGreen"
+                app:icon="@drawable/ic_baseline_preview_36" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/saveExampleButton"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="36dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="5sp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="5sp"
+                android:layout_toRightOf="@+id/showButton"
+                android:background="@color/colorGreen"
+                app:icon="@drawable/ic_baseline_save_36" />
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/addRowButton"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="36dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="5sp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="5sp"
+                android:layout_toRightOf="@+id/saveExampleButton"
+                android:background="@color/colorGreen"
+                app:icon="@drawable/ic_baseline_add_36" />
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/removeRowButton"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="36dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="false"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="55dp"
+                android:layout_marginRight="5sp"
+                android:layout_toEndOf="@+id/addRowButton"
+                android:layout_toRightOf="@+id/addRowButton"
+                android:background="@color/colorGreen"
+                app:icon="@drawable/ic_baseline_remove_36" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

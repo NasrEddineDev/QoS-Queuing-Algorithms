@@ -15,7 +15,7 @@ import java.util.List;
 @Dao
 public interface QueueDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    void insert(Queue queue);
+    long insert(Queue queue);
 
     @Update
     void update(Queue queue);

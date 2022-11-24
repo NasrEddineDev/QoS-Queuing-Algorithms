@@ -6,10 +6,13 @@ import android.os.AsyncTask;
 import androidx.lifecycle.LiveData;
 
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class QueueRepository {
     private QueueDao queueDao;
     LiveData<List<Queue>> allQueues;
+
+    private Long rowId;
 
     public QueueRepository(Application application){
         QoSQueuingAlgorithmDataBase db = QoSQueuingAlgorithmDataBase.getInstance(application);
@@ -17,8 +20,9 @@ public class QueueRepository {
         allQueues = queueDao.getAllQueues();
     }
 
-    public void insert(Queue queue){
-        new QueueRepository.InsertQueueAsyncTask(queueDao).execute(queue);
+    public long insert(Queue queue) throws ExecutionException, InterruptedException {
+        rowId = new InsertQueueAsyncTask(queueDao).execute(queue).get() ;
+        return rowId;
     }
 
     public void update(Queue queue){
@@ -41,15 +45,15 @@ public class QueueRepository {
         return queueDao.getQueueById(queue_id);
     }
 
-    private static class InsertQueueAsyncTask extends AsyncTask<Queue, Void, Void> {
+    private static class InsertQueueAsyncTask extends AsyncTask<Queue, Void, Long> {
         private QueueDao queueDao;
         private InsertQueueAsyncTask(QueueDao queueDao){
             this.queueDao = queueDao;
         }
         @Override
-        protected Void doInBackground(Queue... queues){
-            queueDao.insert(queues[0]);
-            return null;
+        protected Long doInBackground(Queue... queues){
+            Long rowId = queueDao.insert(queues[0]);
+            return rowId;
         }
     }
 

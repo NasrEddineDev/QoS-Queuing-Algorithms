@@ -90,12 +90,13 @@ public final class ExampleDao_Impl implements ExampleDao {
   }
 
   @Override
-  public void insert(final Example example) {
+  public long insert(final Example example) {
     __db.assertNotSuspendingTransaction();
     __db.beginTransaction();
     try {
-      __insertionAdapterOfExample.insert(example);
+      long _result = __insertionAdapterOfExample.insertAndReturnId(example);
       __db.setTransactionSuccessful();
+      return _result;
     } finally {
       __db.endTransaction();
     }

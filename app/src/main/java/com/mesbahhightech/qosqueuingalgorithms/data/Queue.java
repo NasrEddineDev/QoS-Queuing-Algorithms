@@ -2,13 +2,15 @@ package com.mesbahhightech.qosqueuingalgorithms.data;
 
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "queue",
         foreignKeys = @ForeignKey(entity = Example.class,
         parentColumns = "id",
         childColumns = "example_id",
-        onDelete = ForeignKey.CASCADE))
+        onDelete = ForeignKey.CASCADE),
+        indices=@Index(value="example_id"))
 public class Queue {
     @PrimaryKey(autoGenerate = true)
     private int id;

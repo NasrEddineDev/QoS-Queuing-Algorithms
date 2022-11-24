@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/home/nasreddine/Projects/QoSQueuingAlgorithms/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-xlarge-v4/values-xlarge-v4.xml",
+            "outputFile": "com.mesbahhightech.qosqueuingalgorithms.app-mergeDebugResources-23:/values-xlarge-v4/values-xlarge-v4.xml",
             "map": [
                 {
-                    "source": "/home/nasreddine/.gradle/caches/transforms-2/files-2.1/af317d7b1d72e55e912182e02eed293a/appcompat-1.0.2/res/values-xlarge-v4/values-xlarge-v4.xml",
+                    "source": "/home/nasreddine/.gradle/caches/transforms-3/08686d79962d29b0311637d917e3f37c/transformed/appcompat-1.0.2/res/values-xlarge-v4/values-xlarge-v4.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7",
                         "startColumns": "4,4,4,4,4,4",

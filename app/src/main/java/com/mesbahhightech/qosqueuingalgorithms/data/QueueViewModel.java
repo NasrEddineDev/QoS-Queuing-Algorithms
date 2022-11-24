@@ -10,6 +10,7 @@ import com.mesbahhightech.qosqueuingalgorithms.data.Queue;
 import com.mesbahhightech.qosqueuingalgorithms.data.QueueRepository;
 
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class QueueViewModel extends AndroidViewModel {
     private QueueRepository queueRepository;
@@ -21,8 +22,8 @@ public class QueueViewModel extends AndroidViewModel {
         allQueues = queueRepository.getAllQueues();
     }
 
-    public void insert(Queue queue){
-        queueRepository.insert(queue);
+    public long insert(Queue queue) throws ExecutionException, InterruptedException {
+        return queueRepository.insert(queue);
     }
 
     public void update(Queue queue){
