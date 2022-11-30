@@ -182,6 +182,39 @@ public final class ExampleDao_Impl implements ExampleDao {
   }
 
   @Override
+  public List<Example> getAllExamples1() {
+    final String _sql = "SELECT * FROM example ORDER BY id";
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 0);
+    __db.assertNotSuspendingTransaction();
+    final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
+    try {
+      final int _cursorIndexOfId = CursorUtil.getColumnIndexOrThrow(_cursor, "id");
+      final int _cursorIndexOfName = CursorUtil.getColumnIndexOrThrow(_cursor, "name");
+      final int _cursorIndexOfRows = CursorUtil.getColumnIndexOrThrow(_cursor, "rows");
+      final int _cursorIndexOfColumns = CursorUtil.getColumnIndexOrThrow(_cursor, "columns");
+      final List<Example> _result = new ArrayList<Example>(_cursor.getCount());
+      while(_cursor.moveToNext()) {
+        final Example _item;
+        final String _tmpName;
+        _tmpName = _cursor.getString(_cursorIndexOfName);
+        final int _tmpRows;
+        _tmpRows = _cursor.getInt(_cursorIndexOfRows);
+        final int _tmpColumns;
+        _tmpColumns = _cursor.getInt(_cursorIndexOfColumns);
+        _item = new Example(_tmpName,_tmpRows,_tmpColumns);
+        final int _tmpId;
+        _tmpId = _cursor.getInt(_cursorIndexOfId);
+        _item.setId(_tmpId);
+        _result.add(_item);
+      }
+      return _result;
+    } finally {
+      _cursor.close();
+      _statement.release();
+    }
+  }
+
+  @Override
   public Example getExampleById(final int example_id) {
     final String _sql = "SELECT * FROM example where id=?";
     final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 1);

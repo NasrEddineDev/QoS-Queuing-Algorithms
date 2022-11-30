@@ -15,11 +15,13 @@ import java.util.concurrent.ExecutionException;
 public class ExampleRepository {
     private ExampleDao exampleDao;
     LiveData<List<Example>> allExamples;
+    List<Example> allExamples1;
 
     public ExampleRepository(Application application){
         QoSQueuingAlgorithmDataBase db = QoSQueuingAlgorithmDataBase.getInstance(application);
         exampleDao = db.exampleDao();
         allExamples = exampleDao.getAllExamples();
+        allExamples1 = exampleDao.getAllExamples1();
     }
 
     public long insert(Example example) throws ExecutionException, InterruptedException {
@@ -40,6 +42,9 @@ public class ExampleRepository {
 
     public LiveData<List<Example>> getAllExamples(){
         return allExamples;
+    }
+    public List<Example> getAllExamples1(){
+        return allExamples1;
     }
 
     public Example getExampleById(int example_id){

@@ -190,6 +190,39 @@ public final class QueueDao_Impl implements QueueDao {
   }
 
   @Override
+  public List<Queue> getAllQueues1() {
+    final String _sql = "SELECT * FROM queue ORDER BY id";
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 0);
+    __db.assertNotSuspendingTransaction();
+    final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
+    try {
+      final int _cursorIndexOfId = CursorUtil.getColumnIndexOrThrow(_cursor, "id");
+      final int _cursorIndexOfName = CursorUtil.getColumnIndexOrThrow(_cursor, "name");
+      final int _cursorIndexOfContent = CursorUtil.getColumnIndexOrThrow(_cursor, "content");
+      final int _cursorIndexOfExampleId = CursorUtil.getColumnIndexOrThrow(_cursor, "example_id");
+      final List<Queue> _result = new ArrayList<Queue>(_cursor.getCount());
+      while(_cursor.moveToNext()) {
+        final Queue _item;
+        final String _tmpName;
+        _tmpName = _cursor.getString(_cursorIndexOfName);
+        final String _tmpContent;
+        _tmpContent = _cursor.getString(_cursorIndexOfContent);
+        final int _tmpExample_id;
+        _tmpExample_id = _cursor.getInt(_cursorIndexOfExampleId);
+        _item = new Queue(_tmpName,_tmpContent,_tmpExample_id);
+        final int _tmpId;
+        _tmpId = _cursor.getInt(_cursorIndexOfId);
+        _item.setId(_tmpId);
+        _result.add(_item);
+      }
+      return _result;
+    } finally {
+      _cursor.close();
+      _statement.release();
+    }
+  }
+
+  @Override
   public Queue getQueueByExampleId(final int example_id) {
     final String _sql = "SELECT * FROM queue where example_id=?";
     final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 1);
@@ -251,6 +284,45 @@ public final class QueueDao_Impl implements QueueDao {
         _result.setId(_tmpId);
       } else {
         _result = null;
+      }
+      return _result;
+    } finally {
+      _cursor.close();
+      _statement.release();
+    }
+  }
+
+  @Override
+  public List<Queue> getQueuesByExampleName(final String exampleName) {
+    final String _sql = "SELECT * FROM queue where example_id=(SELECT id FROM example where name = ?)";
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 1);
+    int _argIndex = 1;
+    if (exampleName == null) {
+      _statement.bindNull(_argIndex);
+    } else {
+      _statement.bindString(_argIndex, exampleName);
+    }
+    __db.assertNotSuspendingTransaction();
+    final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
+    try {
+      final int _cursorIndexOfId = CursorUtil.getColumnIndexOrThrow(_cursor, "id");
+      final int _cursorIndexOfName = CursorUtil.getColumnIndexOrThrow(_cursor, "name");
+      final int _cursorIndexOfContent = CursorUtil.getColumnIndexOrThrow(_cursor, "content");
+      final int _cursorIndexOfExampleId = CursorUtil.getColumnIndexOrThrow(_cursor, "example_id");
+      final List<Queue> _result = new ArrayList<Queue>(_cursor.getCount());
+      while(_cursor.moveToNext()) {
+        final Queue _item;
+        final String _tmpName;
+        _tmpName = _cursor.getString(_cursorIndexOfName);
+        final String _tmpContent;
+        _tmpContent = _cursor.getString(_cursorIndexOfContent);
+        final int _tmpExample_id;
+        _tmpExample_id = _cursor.getInt(_cursorIndexOfExampleId);
+        _item = new Queue(_tmpName,_tmpContent,_tmpExample_id);
+        final int _tmpId;
+        _tmpId = _cursor.getInt(_cursorIndexOfId);
+        _item.setId(_tmpId);
+        _result.add(_item);
       }
       return _result;
     } finally {

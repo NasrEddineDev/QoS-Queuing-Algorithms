@@ -1044,6 +1044,7 @@ drawable abc_textfield_search_material
 drawable abc_vector_test
 drawable avd_hide_password
 drawable avd_show_password
+drawable cell_recltangle_border
 drawable design_bottom_navigation_item_background
 drawable design_fab_background
 drawable design_ic_visibility
@@ -1088,6 +1089,7 @@ drawable notification_template_icon_bg
 drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
+drawable row_border
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
 id ALT
@@ -1214,6 +1216,7 @@ id bottom
 id bottom_navigatin_view
 id buttonPanel
 id buttonShow
+id buttonsRelativeLayout
 id c1
 id c10
 id c11
@@ -1267,6 +1270,7 @@ id end_padder
 id enterAlways
 id enterAlwaysCollapsed
 id examplesImageView
+id examplesSpinner
 id examplesTextView
 id exitUntilCollapsed
 id expand_activities_button
@@ -1377,6 +1381,7 @@ id search_mag_icon
 id search_plate
 id search_src_text
 id search_voice_btn
+id selectEgRelativeLayout
 id select_dialog_listview
 id selected
 id settingsFragment

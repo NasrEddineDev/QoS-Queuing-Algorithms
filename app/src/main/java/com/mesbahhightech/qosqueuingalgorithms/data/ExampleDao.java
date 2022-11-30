@@ -29,6 +29,9 @@ public interface ExampleDao {
     @Query("SELECT * FROM example ORDER BY id")
     LiveData<List<Example>> getAllExamples();
 
+    @Query("SELECT * FROM example ORDER BY id")
+    List<Example> getAllExamples1();
+
     @Query("SELECT * FROM example where id=:example_id")
     Example getExampleById(int example_id);
 

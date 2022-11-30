@@ -1043,6 +1043,7 @@ int drawable abc_textfield_search_material 0x7f080059
 int drawable abc_vector_test 0x7f08005a
 int drawable avd_hide_password 0x7f08005b
 int drawable avd_show_password 0x7f08005c
+int drawable cell_recltangle_border 0x7f08008c
 int drawable design_bottom_navigation_item_background 0x7f08005d
 int drawable design_fab_background 0x7f08005e
 int drawable design_ic_visibility 0x7f08005f
@@ -1087,6 +1088,7 @@ int drawable notification_template_icon_bg 0x7f080085
 int drawable notification_template_icon_low_bg 0x7f080086
 int drawable notification_tile_bg 0x7f080087
 int drawable notify_panel_notification_icon_bg 0x7f080088
+int drawable row_border 0x7f08008b
 int drawable tooltip_frame_dark 0x7f080089
 int drawable tooltip_frame_light 0x7f08008a
 int id ALT 0x7f090000
@@ -1213,6 +1215,7 @@ int id bottom 0x7f090078
 int id bottom_navigatin_view 0x7f090079
 int id buttonPanel 0x7f09007a
 int id buttonShow 0x7f09007b
+int id buttonsRelativeLayout 0x7f09016b
 int id c1 0x7f09007c
 int id c10 0x7f09007d
 int id c11 0x7f09007e
@@ -1266,6 +1269,7 @@ int id end_padder 0x7f0900ad
 int id enterAlways 0x7f0900ae
 int id enterAlwaysCollapsed 0x7f0900af
 int id examplesImageView 0x7f0900b0
+int id examplesSpinner 0x7f09016c
 int id examplesTextView 0x7f0900b1
 int id exitUntilCollapsed 0x7f0900b2
 int id expand_activities_button 0x7f0900b3
@@ -1376,6 +1380,7 @@ int id search_mag_icon 0x7f09011b
 int id search_plate 0x7f09011c
 int id search_src_text 0x7f09011d
 int id search_voice_btn 0x7f09011e
+int id selectEgRelativeLayout 0x7f09016d
 int id select_dialog_listview 0x7f09011f
 int id selected 0x7f090120
 int id settingsFragment 0x7f090121

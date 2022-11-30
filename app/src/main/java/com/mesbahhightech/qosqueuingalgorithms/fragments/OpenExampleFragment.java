@@ -1,8 +1,10 @@
 package com.mesbahhightech.qosqueuingalgorithms.fragments;
 
+import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -15,9 +17,11 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TableLayout;
 import android.widget.TableRow;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Transformations;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -28,8 +32,13 @@ import com.mesbahhightech.qosqueuingalgorithms.data.ExampleViewModel;
 import com.mesbahhightech.qosqueuingalgorithms.data.Queue;
 import com.mesbahhightech.qosqueuingalgorithms.data.QueueViewModel;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.ExecutionException;
+import java.util.stream.Collectors;
 
 import static androidx.navigation.Navigation.findNavController;
 
@@ -50,11 +59,9 @@ public class OpenExampleFragment extends Fragment {
     private String mParam2;
 
     private Spinner algorithmsSpinner;
+    private Spinner examplesSpinner;
     private TableLayout tableLayout;
     private Button showButton;
-    private Button addNewRowFloatingActionButton;
-    private Button removeRowFloatingActionButton;
-    private Button saveExampleButton;
     private AlgorithmLibrary algorithmLibrary;
     private ExampleViewModel exampleViewModel;
     private QueueViewModel queueViewModel;
@@ -96,15 +103,46 @@ public class OpenExampleFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        final View view = inflater.inflate(R.layout.fragment_new_example, container, false);
-        algorithmsSpinner = (Spinner)view.findViewById(R.id.algorithmsSpinner);
+        final View view = inflater.inflate(R.layout.fragment_open_example, container, false);
+        examplesSpinner = (Spinner) view.findViewById(R.id.examplesSpinner);
+
+        algorithmsSpinner = (Spinner) view.findViewById(R.id.algorithmsSpinner);
         tableLayout = (TableLayout) view.findViewById(R.id.tableLayout);
-        showButton = (Button)view.findViewById(R.id.showButton);
-        addNewRowFloatingActionButton = (Button)view.findViewById(R.id.addRowButton);
-        removeRowFloatingActionButton = (Button)view.findViewById(R.id.removeRowButton);
-        saveExampleButton = (Button)view.findViewById(R.id.saveExampleButton);
+        showButton = (Button) view.findViewById(R.id.showButton);
         exampleViewModel = new ExampleViewModel(getActivity().getApplication());
         queueViewModel = new QueueViewModel(getActivity().getApplication());
+
+        List<Example> egs = exampleViewModel.getAllExamples1();
+
+        ArrayList<String> examples = new ArrayList<>(egs.size());
+        for (Example eg : egs) {
+            examples.add(eg.getName());
+        }
+
+        ArrayAdapter<String> examplesAdapter = new ArrayAdapter<String>(
+                getActivity().getApplicationContext(),
+                android.R.layout.simple_spinner_dropdown_item,
+                examples
+        );
+
+        examplesSpinner.setAdapter(examplesAdapter);
+
+        examplesSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(getActivity().getApplicationContext(),
+                        examples.get(position) + " Selected",
+                        Toast.LENGTH_SHORT).show();
+
+                createTable(examples.get(position));
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
         final ArrayList<String> algorithms = new ArrayList<>();
         algorithms.add("SPQ");
@@ -136,85 +174,11 @@ public class OpenExampleFragment extends Fragment {
             }
         });
 
-        addNewRowFloatingActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                /* Create a new row to be added. */
-                TableRow tr = new TableRow(getActivity().getApplicationContext());
-                tr.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, 0));
-                tr.setBackgroundColor(Color.WHITE);
-                EditText editText = new EditText(getActivity().getApplicationContext());
-                Resources res = getResources();
-                float value = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 12, res.getDisplayMetrics());
-                editText.setPadding((int)value,(int)value,(int)value,(int)value);
-                editText.setHint("Time "+tableLayout.getChildCount());
-                editText.setTextSize(TypedValue.COMPLEX_UNIT_SP,12);
-                editText.setTextColor(Color.WHITE);
-                editText.setGravity(Gravity.CENTER);
-                TableRow.LayoutParams p = new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT);
-                p.weight = 25;
-                editText.setLayoutParams(p);
-                tr.addView(editText);
-
-                editText = new EditText(getActivity().getApplicationContext());
-                res = getResources();
-                value = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 12, res.getDisplayMetrics());
-                editText.setPadding((int)value,(int)value,(int)value,(int)value);
-                editText.setHint("A"+tableLayout.getChildCount());
-                editText.setTextSize(TypedValue.COMPLEX_UNIT_SP,12);
-                editText.setTextColor(Color.WHITE);
-                editText.setGravity(Gravity.CENTER);
-                p = new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT);
-                p.weight = 25;
-                editText.setLayoutParams(p);
-                tr.addView(editText);
-
-                editText = new EditText(getActivity().getApplicationContext());
-                res = getResources();
-                value = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 12, res.getDisplayMetrics());
-                editText.setPadding((int)value,(int)value,(int)value,(int)value);
-                editText.setHint("B"+tableLayout.getChildCount());
-                editText.setTextSize(TypedValue.COMPLEX_UNIT_SP,12);
-                editText.setTextColor(Color.WHITE);
-                editText.setGravity(Gravity.CENTER);
-                p = new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT);
-                p.weight = 25;
-                editText.setLayoutParams(p);
-                tr.addView(editText);
-
-                editText = new EditText(getActivity().getApplicationContext());
-                res = getResources();
-                value = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 12, res.getDisplayMetrics());
-                editText.setPadding((int)value,(int)value,(int)value,(int)value);
-                editText.setHint("C"+tableLayout.getChildCount());
-                editText.setTextSize(TypedValue.COMPLEX_UNIT_SP,12);
-                editText.setTextColor(Color.WHITE);
-                editText.setGravity(Gravity.CENTER);
-                p = new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT);
-                p.weight = 25;
-                editText.setLayoutParams(p);
-                tr.addView(editText);
-                tableLayout.addView(tr, new TableLayout.LayoutParams(TableLayout.LayoutParams.FILL_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
-
-                if(editText.getText().toString().isEmpty())
-                {
-                    editText.setError("UserName Should not be blank");
-                }
-            }
-        });
-
-        removeRowFloatingActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                tableLayout.removeViewAt(tableLayout.getChildCount() - 1);
-            }
-        });
-
         showButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String algorithm = algorithmsSpinner.getSelectedItem().toString();
-                switch (algorithm){
+                switch (algorithm) {
                     case "SPQ":
                         algorithmLibrary.SPQ();
                         break;
@@ -243,46 +207,51 @@ public class OpenExampleFragment extends Fragment {
             }
         });
 
-        saveExampleButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Example example = new Example("eg 01", 3,7);
-                try {
-                    exampleViewModel.insert(example);
-                } catch (ExecutionException e) {
-                    e.printStackTrace();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                Queue queue = new Queue("File A", "A;;A;B;;;;", example.getId());
-                try {
-                    queueViewModel.insert(queue);
-                } catch (ExecutionException e) {
-                    e.printStackTrace();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                queue = new Queue("File B", "A;;A;B;;;;", example.getId());
-                try {
-                    queueViewModel.insert(queue);
-                } catch (ExecutionException e) {
-                    e.printStackTrace();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                queue = new Queue("File C", "A;;A;B;;;;", example.getId());
-                try {
-                    queueViewModel.insert(queue);
-                } catch (ExecutionException e) {
-                    e.printStackTrace();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-
-//                 findNavController(view).navigate(R.id.homeFragment);
-            }
-        });
-
         return view;
+    }
+
+    private void createTable(String exampleName) {
+        List<Queue> queues = queueViewModel.getQueuesByExampleName(exampleName);
+        String[] time = queues.get(0).getContent().split(";");
+        Log.d("this is my array", "time: " + Arrays.toString(time));
+        String[] queueA = queues.get(1).getContent().split(";");
+        Log.d("this is my array", "queueA: " + Arrays.toString(queueA));
+        String[] queueB = queues.get(2).getContent().split(";");
+        Log.d("this is my array", "queueB: " + Arrays.toString(queueB));
+        String[] queueC = queues.get(3).getContent().split(";");
+        Log.d("this is my array", "queueC: " + Arrays.toString(queueC));
+        int childCount = tableLayout.getChildCount();
+        if (childCount > 1) {
+            tableLayout.removeViews(1, childCount - 1);
+        }
+        for(int i = 0; i < time.length; i++){
+            TableRow tr = new TableRow(getActivity().getApplicationContext());
+            tr.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, 0));
+            tr.setBackgroundColor(Color.WHITE);
+            tr.setBackgroundResource(R.drawable.row_border);
+            tr.addView(textView(time[i]));
+            tr.addView(textView(queueA[i]));
+            tr.addView(textView(queueB[i]));
+            tr.addView(textView(queueC[i]));
+            tableLayout.addView(tr, new TableLayout.LayoutParams(TableLayout.LayoutParams.FILL_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
+        }
+    }
+
+    private TextView textView(String str) {
+        TextView textView = new TextView(getActivity().getApplicationContext());
+        Resources res = getResources();
+        float value = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 12, res.getDisplayMetrics());
+        textView.setPadding((int)value,(int)value,(int)value,(int)value);
+//        textView.setText("Time "+tableLayout.getChildCount());
+        textView.setText(str);
+        textView.setTextSize(TypedValue.COMPLEX_UNIT_SP,12);
+        textView.setTextColor(Color.BLACK);
+        textView.setGravity(Gravity.CENTER);
+//        textView.setHintTextColor(Color.GRAY);
+        textView.setBackgroundTintList(ColorStateList.valueOf(Color.GRAY));
+        TableRow.LayoutParams p = new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT);
+        p.weight = 25;
+        textView.setLayoutParams(p);
+        return textView;
     }
 }

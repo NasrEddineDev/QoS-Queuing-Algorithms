@@ -29,9 +29,15 @@ public interface QueueDao {
     @Query("SELECT * FROM queue ORDER BY id")
     LiveData<List<Queue>> getAllQueues();
 
+    @Query("SELECT * FROM queue ORDER BY id")
+    List<Queue> getAllQueues1();
+
     @Query("SELECT * FROM queue where example_id=:example_id")
     Queue getQueueByExampleId(int example_id);
 
     @Query("SELECT * FROM queue where id=:queue_id")
     Queue getQueueById(int queue_id);
+
+    @Query("SELECT * FROM queue where example_id=(SELECT id FROM example where name = :exampleName)")
+    List<Queue> getQueuesByExampleName(String exampleName);
 }

@@ -15,11 +15,13 @@ import java.util.concurrent.ExecutionException;
 public class QueueViewModel extends AndroidViewModel {
     private QueueRepository queueRepository;
     private LiveData<List<Queue>> allQueues;
+    private List<Queue> allQueues1;
 
     public QueueViewModel(@NonNull Application application) {
         super(application);
         queueRepository = new QueueRepository(application);
         allQueues = queueRepository.getAllQueues();
+        allQueues1 = queueRepository.getAllQueues1();
     }
 
     public long insert(Queue queue) throws ExecutionException, InterruptedException {
@@ -38,11 +40,15 @@ public class QueueViewModel extends AndroidViewModel {
         queueRepository.deleteAllQueues();
     }
 
-    public LiveData<List<Queue>> getAllQueues(){
-        return allQueues;
-    }
+    public LiveData<List<Queue>> getAllQueues(){return allQueues;}
+
+    public List<Queue> getAllQueues1() {return allQueues1;}
 
     public Queue getQueueById(int queue_id){
         return queueRepository.getQueueById(queue_id);
+    }
+
+    public List<Queue> getQueuesByExampleName(String exampleName) {
+        return queueRepository.getQueuesByExampleName(exampleName);
     }
 }

@@ -15,11 +15,13 @@ import java.util.concurrent.ExecutionException;
 public class ExampleViewModel extends AndroidViewModel {
     private ExampleRepository exampleRepository;
     private LiveData<List<Example>> allExamples;
+    private List<Example> allExamples1;
 
     public ExampleViewModel(@NonNull Application application) {
         super(application);
         exampleRepository = new ExampleRepository(application);
         allExamples = exampleRepository.getAllExamples();
+        allExamples1 = exampleRepository.getAllExamples1();
     }
 
     public long insert(Example example) throws ExecutionException, InterruptedException {
@@ -40,6 +42,9 @@ public class ExampleViewModel extends AndroidViewModel {
 
     public LiveData<List<Example>> getAllExamples(){
         return allExamples;
+    }
+    public List<Example> getAllExamples1(){
+        return allExamples1;
     }
 
     public Example getExampleById(int example_id){

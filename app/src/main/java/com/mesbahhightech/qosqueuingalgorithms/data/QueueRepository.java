@@ -11,6 +11,7 @@ import java.util.concurrent.ExecutionException;
 public class QueueRepository {
     private QueueDao queueDao;
     LiveData<List<Queue>> allQueues;
+    List<Queue> allQueues1;
 
     private Long rowId;
 
@@ -18,6 +19,7 @@ public class QueueRepository {
         QoSQueuingAlgorithmDataBase db = QoSQueuingAlgorithmDataBase.getInstance(application);
         queueDao = db.queueDao();
         allQueues = queueDao.getAllQueues();
+        allQueues1 = queueDao.getAllQueues1();
     }
 
     public long insert(Queue queue) throws ExecutionException, InterruptedException {
@@ -41,8 +43,14 @@ public class QueueRepository {
         return allQueues;
     }
 
+    public List<Queue> getAllQueues1(){return allQueues1;}
+
     public Queue getQueueById(int queue_id){
         return queueDao.getQueueById(queue_id);
+    }
+
+    public List<Queue> getQueuesByExampleName(String exampleName) {
+        return queueDao.getQueuesByExampleName(exampleName);
     }
 
     private static class InsertQueueAsyncTask extends AsyncTask<Queue, Void, Long> {
